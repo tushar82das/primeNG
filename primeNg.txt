@@ -1,0 +1,143 @@
+---------------------------------------------------
+**********-----------PrimeNg-----------************
+---------------------------------------------------
+Step-1:
+
+npm install primeng --save
+npm install primeicons --save
+npm install @angular/animations --save
+----------------------------------------------------
+
+Step-2: (app.module.ts)
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+    imports: [
+        BrowserAnimationsModule,
+    ]
+})
+-----------------------------------------------------
+
+Step-3: (angular.json)
+
+"styles": [
+  "node_modules/primeicons/primeicons.css",
+  "node_modules/primeng/resources/themes/nova-light/theme.css",
+  "node_modules/primeng/resources/primeng.min.css"
+]
+
+---------------------------------------------------
+*********-------PrimeNg(Dropdown)------************
+---------------------------------------------------
+--> npm install @angular/cdk --save
+
+--> import {DropdownModule} from 'primeng/dropdown';       (app.module.ts)
+
+Template:
+---------
+<p-dropdown [options]="cities" [(ngModel)]="selectedCity" name="selectedCity" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
+<p>Selected City: {{selectedCity ? selectedCity.name : 'none'}}</p>
+
+TypeScript:
+-----------
+export class DropdownDemo {
+	
+	cities: City[];
+	
+	constructor() {
+        this.cities = [
+            {name: 'New York', code: 'NY'},
+            {name: 'Rome', code: 'RM'},
+            {name: 'London', code: 'LDN'},
+            {name: 'Istanbul', code: 'IST'},
+            {name: 'Paris', code: 'PRS'}
+        ];
+	}
+}
+
+---------------------------------------------------
+*********-------PrimeNg(LightBox)------************
+---------------------------------------------------
+-->  import {LightboxModule} from 'primeng/lightbox';
+
+Template:
+---------
+<p-lightbox [images]="images"></p-lightbox>
+
+TypeScript:
+-----------
+export class LightboxComponent implements OnInit {
+  
+  images: any[];
+
+  constructor() { }
+
+  ngOnInit() {
+    this.images = [];
+    this.images.push({ source: 'assets/images/img2.jpg', thumbnail: 'assets/images/img2.jpg', title: 'Sopranos 1' });
+    this.images.push({ source: 'assets/images/img4.jpg', thumbnail: 'assets/images/img4.jpg', title: 'Sopranos 3' });
+  }
+
+}
+
+---------------------------------------------------
+*********-------PrimeNg(Accordion)------***********
+---------------------------------------------------
+-->  import {AccordionModule} from 'primeng/accordion';
+
+Template:
+---------
+<p-accordion (onClose)="onTabClose($event)" (onOpen)="onTabOpen($event)">
+    <p-accordionTab header="Godfather I" [selected]="true">
+        Content-1
+    </p-accordionTab>
+    <p-accordionTab header="Godfather II">
+        Content-2
+    </p-accordionTab>
+    <p-accordionTab header="Godfather III">
+        Content-3
+    </p-accordionTab>
+</p-accordion>
+
+TypeScript:
+-----------
+export class AccordionDemo {
+
+	constructor() {}
+	
+	onTabClose(event) {
+        console.log(event.index);
+    }
+    
+    onTabOpen(event) {
+        console.log(event.index);
+    }
+}
+
+---------------------------------------------------
+*********-------PrimeNg(TabMenu)------***********
+---------------------------------------------------
+--> import {TabMenuModule} from 'primeng/tabmenu';    (app.module.ts)
+--> import {MenuItem} from 'primeng/api';       (In local component)
+
+Template:
+---------
+<p-tabMenu [model]="items"></p-tabMenu>
+
+TypeScript:
+-----------
+export class TabMenuDemo {
+    
+    items: MenuItem[];
+
+    ngOnInit() {
+        this.items = [
+            {label: 'Stats', icon: 'fa fa-fw fa-bar-chart'},
+            {label: 'Calendar', icon: 'fa fa-fw fa-calendar'},
+            {label: 'Documentation', icon: 'fa fa-fw fa-book'},
+            {label: 'Support', icon: 'fa fa-fw fa-support'},
+            {label: 'Social', icon: 'fa fa-fw fa-twitter'}
+        ];
+    }
+}
