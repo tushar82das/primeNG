@@ -1,0 +1,51 @@
+<h4>Dropdown:</h4>
+<!-- <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+<p-dropdown [options]="cities2" [(ngModel)]="selectedCity2"></p-dropdown> -->
+<hr><br><br>
+
+<h4>Dialog Box:</h4>
+<p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true"
+    [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+        His beloved son Michael has just come home from the war, but does not intend to become part of his father's
+        business.</p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No"
+            class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+
+<button type="button" (click)="showDialog()" class="btn btn-success" pButton icon="pi pi-info-circle">Open
+    Dialog</button>
+
+<br><br>
+<hr>
+<p-rating [(ngModel)]="star" stars="10"></p-rating>
+
+<br><br>
+<hr>
+<div class="ui-g-12 ui-md-4">
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input type="text" pInputText placeholder="Username">
+    </div>
+</div>
+<br><br>
+<hr>
+<p-accordion>
+    <p-accordionTab header="Header 1">
+        Content 1
+    </p-accordionTab>
+    <p-accordionTab header="Header 2">
+        Content 2
+    </p-accordionTab>
+    <p-accordionTab header="Header 3">
+        Content 3
+    </p-accordionTab>
+</p-accordion>
+<br><br>
+<hr>
+<p-tabMenu [model]="items"></p-tabMenu>
+<br><br>
+<hr>
